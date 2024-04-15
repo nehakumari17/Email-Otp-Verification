@@ -30,7 +30,6 @@ const Register = () => {
                 });
                 navigate('/otp');
             } else {
-                // Handle other response status codes
                 toast.error('Unexpected error occurred. Please try again later.');
             }
         } catch (error) {

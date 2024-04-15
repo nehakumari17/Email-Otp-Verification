@@ -19,7 +19,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const response = await axios.post('https://email-otp-verification-8iy1.onrender.com/api/users/', formData);
-            if (response.status) {
+            if (response.status === 200) { // Change this to check specifically for 200
                 setFormData({
                     name: '',
                     email: '',
@@ -30,13 +30,16 @@ const Register = () => {
                 });
                 navigate('/otp');
             } else {
-              toast.error('Unexpected error occurred. Please try again later.');
-          }
-      } catch (error) {
-          console.error('Error registering user:', error);
-          toast.error('Error registering user. Please try again later.');
-      }
+                // Handle other response status codes
+                toast.error('Unexpected error occurred. Please try again later.');
+            }
+        } catch (error) {
+            console.error('Error registering user:', error);
+            toast.error('Error registering user. Please try again later.');
+        }
     };
+    
+    
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-t from-rose-400 to-red-500 py-12 px-4 sm:px-6 lg:px-8">

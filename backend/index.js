@@ -1,14 +1,14 @@
 const express = require("express")
 const connectDb = require("./connection/database")
 const userRoutes = require("./routes/userRoutes")
-const cors =require('cors')
+const cors = require('cors')
 
 const app = express()
 const PORT = 3000
 
 const corsOptions = {
     origin: "https://email-otp-verification-frontend-f4lg.onrender.com",
-    method: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"], 
     credentials: true
 }
 

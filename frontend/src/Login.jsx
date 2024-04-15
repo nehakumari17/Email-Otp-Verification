@@ -14,7 +14,7 @@ const Login = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://email-otp-verification-8iy1.onrender.com/api/login", users)
+            const response = await axios.post("https://email-otp-verification-8iy1.onrender.com/api/users/login", users)
             if (response.status === 200) {
                 const userData = response.data.user;
                 localStorage.setItem("token", response.data.token)

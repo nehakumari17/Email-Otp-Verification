@@ -16,7 +16,7 @@ app.use(cors(corsOptions))
 
 app.use(express.json())
 
-app.use("/api", userRoutes)
+app.use("/api/users", userRoutes);
 
 connectDb().then(() => {
     app.listen(PORT, () => {

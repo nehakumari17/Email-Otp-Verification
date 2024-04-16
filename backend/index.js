@@ -23,6 +23,8 @@ app.get("/", (req, res) => {
     res.send("Hello World");
 });
 
+app.use('/', express.static('dist'))
+
 connectDb()
     .then(() => {
         app.listen(PORT, () => {

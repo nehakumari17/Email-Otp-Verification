@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/register",
+        "email-otp-verification-backend-5dm5ylvbd.vercel.app/api/register",
         formData
       );
       if (response.status === 200) {

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "npm run install-backend"
+    "install-backend": "npm install backend",
+    "start-backend": "cd backend && node index.js"
   },
   "keywords": [],
   "author": "",

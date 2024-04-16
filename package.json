@@ -1,14 +1,16 @@
 {
   "name": "email-verification",
   "version": "1.0.0",
-  "description": "A project for email verification featuring both backend and frontend components.",
-  "main": "src/index.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start-backend": "cd backend && npm start",
+    "install-backend": "cd backend && npm install",
+    "start-backend": "cd backend && node index.js",
+    "install-frontend": "cd frontend && npm install",
     "build-frontend": "cd frontend && npm run build",
-    "start-frontend": "cd frontend && npm start"
+    "start-frontend": "cd frontend && npm run dev"
   },
-  "keywords": ["email", "verification", "backend", "frontend"],
-  "author": "Your Name",
+  "keywords": [],
+  "author": "",
   "license": "ISC"
 }

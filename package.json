@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-backend": "cd backend && npm install",
+    "install-backend": "npm install --prefix backend",
     "start-backend": "cd backend && node index.js",
     "install-frontend": "cd frontend && npm install",
     "build-frontend": "cd frontend && npm run build",

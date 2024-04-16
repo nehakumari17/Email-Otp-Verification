@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/register",
+        "https://email-otp-verification-backend-0d8s.onrender.com/api/register",
         formData
       );
       if (response.status === 200) {

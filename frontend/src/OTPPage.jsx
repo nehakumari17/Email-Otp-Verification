@@ -26,7 +26,7 @@ const OTPPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://email-otp-verification-backend-i4n6.onrender.com/api/verify-otp', { userId: userId, otp: otp });
+      const response = await axios.post('http://localhost:3000/api/verify-otp', { userId: userId, otp: otp });
       setVerificationResult(response.data);
       if (response.status === 200) {
         navigate('/login');

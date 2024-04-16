@@ -7,7 +7,7 @@ const app = express()
 const PORT = 3000
 
 const corsOptions = {
-    origin: "email-otp-verification-frontend.vercel.app",
+    origin: "https://email-otp-verification-frontend.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"], 
     credentials: true
 }

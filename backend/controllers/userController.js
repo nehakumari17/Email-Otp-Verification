@@ -5,13 +5,13 @@ const JWT = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const randomstring = require("randomstring");
 
-// const transporter = nodemailer.createTransport({
-//     service: "outlook",
-//     auth: {
-//         user: process.env.AUTH_EMAIL,
-//         pass: process.env.AUTH_PASS,
-//     },
-// });
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.AUTH_EMAIL,
+        pass: process.env.AUTH_PASS,
+    },
+});
 
 const generateOTP = () => {
     return randomstring.generate({ length: 6, charset: "numeric" });
@@ -29,16 +29,16 @@ const register = async (req, res) => {
         const newUser = new userModel({ name, email, password: hashPassword });
         await newUser.save();
 
-        // const otp = generateOTP();
+        const otp = generateOTP();
 
-        // const mailOptions = {
-        //     from: process.env.AUTH_EMAIL,
-        //     to: email,
-        //     subject: "Welcome to Our Application",
-        //     text: `Hi ${name},\n\nThank you for registering with us!\n\nYour OTP is: ${otp}\n\nBest Regards,\nThe Application Team`,
-        // };
+        const mailOptions = {
+            from: process.env.AUTH_EMAIL,
+            to: email,
+            subject: "Welcome to Our Application",
+            text: `Hi ${name},\n\nThank you for registering with us!\n\nYour OTP is: ${otp}\n\nBest Regards,\nThe Application Team`,
+        };
 
-        // await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptions);
         console.log("Registration email sent successfully");
 
         const token = JWT.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: "1h" });

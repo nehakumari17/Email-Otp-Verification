@@ -7,7 +7,7 @@ const app = express()
 const PORT = 3000
 
 const corsOptions = {
-    origin: "https://email-otp-verification-frontend-f4lg.onrender.com",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"], 
     credentials: true
 }
@@ -16,7 +16,7 @@ app.use(cors(corsOptions))
 
 app.use(express.json())
 
-app.use("/api/users", userRoutes);
+app.use("/api", userRoutes);
 
 connectDb().then(() => {
     app.listen(PORT, () => {

@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 const randomstring = require("randomstring");
 
 const transporter = nodemailer.createTransport({
-    service: "Outlook",
+    service: "outlook",
     auth: {
         user: process.env.AUTH_EMAIL,
         pass: process.env.AUTH_PASS,

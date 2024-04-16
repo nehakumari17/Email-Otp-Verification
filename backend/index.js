@@ -7,7 +7,7 @@ const app = express()
 const PORT = 3000
 
 const corsOptions = {
-    origin: "https://email-otp-verification-frontend-yvuh.onrender.com/",
+    origin: "http://localhost:5173/",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"], 
     credentials: true
 }

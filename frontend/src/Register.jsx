@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://email-otp-verification-backend-i4n6.onrender.com/api/register",
+        "https://email-otp-verification-backend-i4n6.onrender.com/register",
         formData
       );
       if (response.status === 200) {

@@ -41,7 +41,8 @@ const register = async (req, res) => {
         await transporter.sendMail(mailOptions);
         console.log("Registration email sent successfully");
 
-        res.status(200).json({ message: "Sign up successful", success: true });
+        const token = JWT.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        res.status(200).json({ message: "Sign up successful", success: true, token });
     } catch (error) {
         console.error("Error occurred during registration", error);
         return res.status(500).json({ message: "Error occurred during registration", success: false });
@@ -59,8 +60,7 @@ const login = async (req, res) => {
         if (!isComparePassword) {
             return res.status(400).json({ message: "Invalid login credentials", success: false });
         } else {
-            const token = JWT.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-            res.status(200).json({ message: "Login successful", success: true, token });
+            res.status(200).json({ message: "Login successful", success: true });
         }
     } catch (error) {
         console.error("Error occurred during login", error);
@@ -96,6 +96,7 @@ const verifyOtp = async (req, res) => {
         console.error("Error verifying OTP", error);
         res.status(500).json({ success: false, message: "Error verifying OTP" });
     }
-};
+}; 
+
 
 module.exports = { register, login, verifyOtp };

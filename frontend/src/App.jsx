@@ -10,16 +10,17 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    if ( token) {
+      dispatch({ type: "SET_TOKEN", payload: token });
+    }
   }, [dispatch]);
 
-  return (
-    <Router>       
+  return (       
         <Routes>
           <Route path="/" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/otp" element={<OTPPage />} />
         </Routes>
-    </Router>
   );
 }   
 

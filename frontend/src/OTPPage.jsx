@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {jwtDecode} from "jwt-decode";
 
 const OTPPage = () => {
   const navigate = useNavigate();
@@ -10,9 +11,9 @@ const OTPPage = () => {
 
   // Function to fetch user ID from local storage or cookies
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
+    const storedToken = localStorage.getItem("token");
     if (storedToken) {
-      const decodedToken = jwt_decode(storedToken);
+      const decodedToken = jwtDecode(storedToken);
       const userId = decodedToken.userId;
       setUserId(userId);
     }
@@ -25,7 +26,7 @@ const OTPPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/verify-otp', { userId, otp });
+      const response = await axios.post('http://localhost:3000/api/verify-otp', { userId: userId, otp: otp });
       setVerificationResult(response.data);
       if (response.status === 200) {
         navigate('/login');

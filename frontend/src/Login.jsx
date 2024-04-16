@@ -1,7 +1,10 @@
+import axios from 'axios';
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate()
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -14,9 +17,8 @@ const Login = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3000/api/login", users)
+            const response = await axios.post("http://localhost:3000/api/login", formData)
             if (response.status === 200) {
-                const userData = response.data.user;
                 localStorage.setItem("token", response.data.token)
                 toast.success("Login successful");
                 navigate("/");
@@ -32,6 +34,7 @@ const Login = () => {
     
       return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-t from-rose-400 to-red-500 py-12 px-4 sm:px-6 lg:px-8">
+          <Toaster />
           <div className="max-w-md w-full space-y-8">
             <div>
               <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login</h2>

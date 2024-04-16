@@ -17,7 +17,7 @@ const Login = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("email-otp-verification-backend-5dm5ylvbd.vercel.app/api/login", formData)
+            const response = await axios.post("https://email-otp-verification-backend.vercel.app/api/login", formData)
             if (response.status === 200) {
                 localStorage.setItem("token", response.data.token)
                 toast.success("Login successful");

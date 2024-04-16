@@ -26,7 +26,7 @@ const OTPPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('email-otp-verification-backend-5dm5ylvbd.vercel.app/api/verify-otp', { userId: userId, otp: otp });
+      const response = await axios.post('https://email-otp-verification-backend.vercel.app/api/verify-otp', { userId: userId, otp: otp });
       setVerificationResult(response.data);
       if (response.status === 200) {
         navigate('/login');

@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://email-otp-verification-backend.vercel.app/api/register",
+        `${window.location.origin}/api/register`,
         formData
       );
       if (response.status === 200) {

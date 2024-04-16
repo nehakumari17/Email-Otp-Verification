@@ -13,13 +13,13 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Router>       
+    <div>       
         <Routes>
           <Route path="/" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/otp" element={<OTPPage />} />
         </Routes>
-    </Router>
+    </div>
   );
 }   
 

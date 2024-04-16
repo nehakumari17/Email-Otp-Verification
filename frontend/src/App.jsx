@@ -10,18 +10,15 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    // Do something with the token if needed
   }, [dispatch]);
 
   return (
-    <Router> {/* Wrap your routes inside the Router component */}
-      <div>
+    <Router>       
         <Routes>
           <Route path="/" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/otp" element={<OTPPage />} />
         </Routes>
-      </div>
     </Router>
   );
 }

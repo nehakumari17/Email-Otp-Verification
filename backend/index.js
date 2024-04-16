@@ -7,25 +7,29 @@ const path = require("path")
 const app = express()
 const PORT = 3000
 
-// const corsOptions = {
-//     origin: "https://email-otp-verification-frontend.vercel.app",
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"], 
-//     credentials: true
-// }
+const corsOptions = {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"], 
+    credentials: true
+}
 
-app.use(cors())
+app.use(cors(corsOptions))
 
 app.use(express.json())
 
 app.use("/api", userRoutes)
 
 app.get("/", (req, res) => {
-    app.use(express.static(path.resolve(__dirname, "frontend", "dist")))
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
-})
+    res.send("Hello World");
+});
 
-connectDb().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server is running at port ${PORT}`)
+connectDb()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server is running at port ${PORT}`);
+        });
     })
-})
+    .catch(err => {
+        console.error("Failed to connect to database:", err);
+        process.exit(1); 
+    });

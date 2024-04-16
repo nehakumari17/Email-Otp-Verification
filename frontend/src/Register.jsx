@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${window.location.origin}/api/register`,
+        "http://localhost:3000/api/register",
         formData
       );
       if (response.status === 200) {

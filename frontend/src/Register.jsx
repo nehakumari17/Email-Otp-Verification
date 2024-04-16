@@ -18,8 +18,8 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/api/register', formData);
-            if (response.status === 200) { // Change this to check specifically for 200
+            const response = await axios.post('https://email-otp-verification-backend-cvmn.onrender.com/api/register', formData);
+            if (response.status === 200) { 
                 setFormData({
                     name: '',
                     email: '',
